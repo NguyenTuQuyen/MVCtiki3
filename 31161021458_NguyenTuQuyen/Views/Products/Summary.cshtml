@@ -1,0 +1,12 @@
+﻿@model _31161021458_NguyenTuQuyen.Models.HoaDon
+<div class="navbar-right" style="margin-left:50px">
+	@Html.ActionLink("Checkout", "Checkout", "Products",
+new { @class = "btn btn-danger navbar-btn" })
+</div>
+<div class="navbar-text navbar-right">
+	<b>Giỏ hàng của bạn:</b>
+	@Model.ChiTietHoaDons.Count sản phẩm,
+	@Model.TongTien.ToString("c")
+</div>
+
+

@@ -21,11 +21,11 @@
 				<div style="display:inline-block; float:left; margin-right:50px;">
 					<div style="font-size:12px; text-align:center" >Số lượng:</div>
 					<div style=" background-color:antiquewhite; border-radius:15px">
-						@Html.ActionLink("+", "TangSoLuong", new { }, new { @class = "btn btn-md " })
+						@Html.ActionLink("+", "TangSoLuong", new { id = Model.ID}, new { @class = "btn btn-md " })
 
-						@*@hoaDonChiTiet.SoLuong*@ dgdf
+						@*@hoaDonChiTiet.SoLuong*@
 
-						@Html.ActionLink("-", "GiamSoLuong", new { }, new { @class = "btn btn-md" })
+						@Html.ActionLink("-", "GiamSoLuong", new { id = Model.ID }, new { @class = "btn btn-md" })
 					</div>
 
 				</div>
@@ -64,5 +64,6 @@
 </div>
 <p style="margin-top:50px;">
 	@Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID }) |
+	@Html.ActionLink("Xóa", "Delete", "Products", new { id = Model.ID } ) |
 	@Html.ActionLink("Trở về trang chủ", "Index")
 </p>

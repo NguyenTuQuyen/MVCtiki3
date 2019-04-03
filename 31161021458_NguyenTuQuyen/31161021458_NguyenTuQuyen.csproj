@@ -330,6 +330,8 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\AddToCart.cshtml" />
     <Content Include="Views\Products\Checkout.cshtml" />
+    <Content Include="Views\Products\Summary.cshtml" />
+    <Content Include="Views\Products\CheckoutCompleted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

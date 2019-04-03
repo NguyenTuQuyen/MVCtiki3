@@ -12,6 +12,9 @@
 			<th>Sản phẩm</th>
 			<th class="text-right">Giá</th>
 			<th class="text-right">Thành Tiền</th>
+			<th >Xóa SP</th>
+			<th >Tăng SL</th>
+			<th >Giảm SL</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,12 +22,17 @@
 		{
 			<tr>
 				<td class="text-center">@hoaDonChiTiet.SoLuong</td>
-				<td class="text-left">@hoaDonChiTiet.ProductObj.NameProduct</td>
+				<td class="text-left" onclick="location.href='@Url.Action("Details", "Products", new { id = hoaDonChiTiet.ProductObj.ID } )'">
+				<a>
+					<img src="@Url.Content(hoaDonChiTiet.ProductObj.ImagePath)" width="30" height="30" multiple />
+					@hoaDonChiTiet.ProductObj.NameProduct
+				</a>
+				</td>
 				<td class="text-right">@hoaDonChiTiet.ProductObj.Price.ToString("c")</td>
 				<td class="text-right">
 					@((hoaDonChiTiet.SoLuong * hoaDonChiTiet.ProductObj.Price).ToString("c"))
 				</td>
-				<td>
+				<td style="align-content:flex-end">
 					@Html.ActionLink("Remove", "RemoveFromCart",
 	new { maMovies = hoaDonChiTiet.MaProduct }, new { @class = "btn btn-sm btn-warning" })
 				</td>

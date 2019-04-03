@@ -66,8 +66,8 @@
 		<div class="col-md-10">
 
 			@Html.EditorFor(model => model.PromotionCodeInput, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ActionLink("Áp dụng", "CheckPromotionCode",
-	new { code = Model.PromotionCodeInput }, new { @class = "btn btn-sm btn-primary" })
+			@*@Html.ActionLink("Áp dụng", "CheckPromotionCode",
+				new { code = Model.PromotionCodeInput }, new { @class = "btn btn-sm btn-primary" })*@
 
 			@Html.ValidationMessageFor(model => model.Messages, "", new { @class = "text-danger" })
 		</div>
@@ -77,5 +77,7 @@
 			<input type="submit" value="Hoàn thành" class="btn btn-default" />
 		</div>
 	</div>
+	@Html.ActionLink("Trở về trang chủ", "Index")
+
 </div>
 }

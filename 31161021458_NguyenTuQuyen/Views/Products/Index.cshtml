@@ -31,9 +31,7 @@
 			{
 
 				<div class="col-md-2"  onclick="location.href='@Url.Action("Details", "Products", new { id = item.ID } )'">
-					@Html.ActionLink("Mua hang", "AddToCart",
-					"Movies", new { id = item.ID },
-					new { @class = "btn btn-success btn-xs" })
+					
 
 					<img src="@Url.Content(item.ImagePath)" width="200" height="200" multiple />
 					<p>@Html.DisplayNameFor(model => model.NameProduct): @Html.DisplayFor(modelItem => item.NameProduct)</p>
@@ -44,12 +42,7 @@
 					<p>@Html.DisplayNameFor(model => model.Installment): @Html.DisplayFor(modelItem => item.Installment)</p>
 					<p>@Html.DisplayNameFor(model => model.Ship24h): @Html.DisplayFor(modelItem => item.Ship24h)</p>
 
-					@Html.ActionLink("Chinh sua", "Edit", "Products", new { id = item.ID },
-					   new { @class = "btn btn-success btn-xs" }) |
-					@Html.ActionLink("Chi tiet", "Details", "Products", new { id = item.ID },
-					new { @class = "btn btn-primary btn-xs" }) |
-					@Html.ActionLink("Xoa", "Delete", "Products", new { id = item.ID },
-					new { @class = "btn btn-warning btn-xs" })
+					
 
 				</div>
 
