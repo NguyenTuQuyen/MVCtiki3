@@ -11,128 +11,142 @@ using _31161021458_NguyenTuQuyen.Models;
 
 namespace _31161021458_NguyenTuQuyen.Controllers
 {
-    public class CategoriesController : Controller
+    public class ProductsController : Controller
     {
         private MainDBContext db = new MainDBContext();
 
-        // GET: Categories
+        // GET: Products
         [HttpGet]
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Products.ToList());
         }
 
-        // GET: Categories/Details/5
+        // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // GET: Categories/Create
+        // GET: Products/Create
         public ActionResult Create()
         {
             ViewBag.ListCategory = db.Categories.
-               Select(x => new SelectListItem()
-               { Text = x.Name, Value = x.ID.ToString() })
-               .Distinct()
-               .ToList();
+                 Select(x => new SelectListItem()
+                 { Text = x.Name, Value = x.ID.ToString() })
+                 .Distinct()
+                 .ToList();
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Picture")] Category category, HttpPostedFileBase file)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                category.ImagePath = "~/Content/Images/IconCategories/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/IconCategories/"), fileName);
+                product.ImagePath = "~/Content/Images/ProductImages/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/ProductImages/"), fileName);
                 file.SaveAs(fileName);
 
-                db.Categories.Add(category);
-                db.SaveChanges();
+                product.CategoryProductID = int.Parse(product.Category);
+                db.Products.Add(product);
+                        db.SaveChanges();
+                  
                 return RedirectToAction("Index");
             }
+            ViewBag.ListCategory = db.Categories.
+              Select(x => new SelectListItem()
+              { Text = x.Name, Value = x.ID.ToString() })
+              .Distinct()
+              .ToList();
 
-            return View(category);
+            return View(product);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Picture")] Category category, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ID,NameProduct,Price,Picture,CategoryProductID,Ship24h,Sale,Comment,Installment,PromotionCode,Feature,Description")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                category.ImagePath = "~/Content/Images/IconCategories/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/IconCategories/"), fileName);
+                product.ImagePath = "~/Content/Images/ProductImages/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/ProductImages/"), fileName);
                 file.SaveAs(fileName);
 
-                db.Entry(category).State = EntityState.Modified;
+                product.CategoryProductID = int.Parse(product.Category);
+
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            ViewBag.ListCategory = db.Categories.
+              Select(x => new SelectListItem()
+              { Text = x.Name, Value = x.ID.ToString() })
+              .Distinct()
+              .ToList();
+
+            return View(product);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

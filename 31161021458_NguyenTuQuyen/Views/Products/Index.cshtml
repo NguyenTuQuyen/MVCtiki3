@@ -1,0 +1,69 @@
+﻿@model IEnumerable<_31161021458_NguyenTuQuyen.Models.Product>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<div class="container">
+	<div>
+		<div class="col-md-4">
+			<ul style="list-style:none">
+				@foreach (var item in Model)
+				{
+					<li style="margin-bottom:10px;">
+						<img src="@Url.Content(item.CategoryObj.ImagePath)" width="20" height="20" multiple />
+						@Html.ActionLink(item.CategoryObj.Name, "Index", "Categories", new { id = item.CategoryObj.ID })
+					</li>
+				}
+				<li style="margin-bottom:10px; margin-top:50px;">
+					<img src="~/Content/Images/icon_create.png" width="20" height="20" multiple />
+					@Html.ActionLink("Tạo mới sản phẩm", "Create")
+				</li>
+				<li style="margin-bottom:10px;">
+					<img src="~/Content/Images/icon_create.png" width="20" height="20" multiple />
+					@Html.ActionLink("Tạo mới danh mục", "Create", "Categories")
+
+				</li>
+			</ul>
+		</div>
+		<div class="row grid-demo">
+			@foreach (var item in Model)
+			{
+
+				<div class="col-md-2"  onclick="location.href='@Url.Action("Details", "Products", new { id = item.ID } )'">
+					@Html.ActionLink("Mua hang", "AddToCart",
+					"Movies", new { id = item.ID },
+					new { @class = "btn btn-success btn-xs" })
+
+					<img src="@Url.Content(item.ImagePath)" width="200" height="200" multiple />
+					<p>@Html.DisplayNameFor(model => model.NameProduct): @Html.DisplayFor(modelItem => item.NameProduct)</p>
+					<p>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
+					<p>@Html.DisplayNameFor(model => model.Rated): @Html.DisplayFor(modelItem => item.Rated)</p>
+					<p>@Html.DisplayNameFor(model => model.PromotionCode): @Html.DisplayFor(modelItem => item.PromotionCode)</p>
+					<p>@Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(modelItem => item.Sale)</p>
+					<p>@Html.DisplayNameFor(model => model.Installment): @Html.DisplayFor(modelItem => item.Installment)</p>
+					<p>@Html.DisplayNameFor(model => model.Ship24h): @Html.DisplayFor(modelItem => item.Ship24h)</p>
+
+					@Html.ActionLink("Chinh sua", "Edit", "Products", new { id = item.ID },
+					   new { @class = "btn btn-success btn-xs" }) |
+					@Html.ActionLink("Chi tiet", "Details", "Products", new { id = item.ID },
+					new { @class = "btn btn-primary btn-xs" }) |
+					@Html.ActionLink("Xoa", "Delete", "Products", new { id = item.ID },
+					new { @class = "btn btn-warning btn-xs" })
+
+				</div>
+
+			}
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script type="text/javascript">
+		function viewDetails() {
+				location.href = '@Url.Action("Details","1")';
+
+			});
+	</script>
+}

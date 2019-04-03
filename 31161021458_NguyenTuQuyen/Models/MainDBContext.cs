@@ -15,6 +15,6 @@ namespace _31161021458_NguyenTuQuyen.Models
                 => System.Diagnostics.Debug.WriteLine(s);
         }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Product> Products { get; set; }
     }
 }
