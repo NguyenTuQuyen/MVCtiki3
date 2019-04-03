@@ -1,24 +1,46 @@
 ﻿@model _31161021458_NguyenTuQuyen.Models.Product
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Chi tiết sản phẩm</h2>
 
-<div >
+<div>
 
-	<div class="col-md-12" >
+	<div class="col-md-12">
 		<div class="col-md-6">
 			<div class="col-xs-2">
 				sdf
 			</div>
 			<div class="col-xs-10">
-				<img src="@Url.Content(Model.ImagePath) "  width="100%" height="100%" multiple/>
+				<img src="@Url.Content(Model.ImagePath) " width="100%" height="100%" multiple />
+			</div>
+
+			<div style="margin: 0% auto ;">
+				<div style="display:inline-block; float:left; margin-right:50px;">
+					<div style="font-size:12px; text-align:center" >Số lượng:</div>
+					<div style=" background-color:antiquewhite; border-radius:15px">
+						@Html.ActionLink("+", "TangSoLuong", new { }, new { @class = "btn btn-md " })
+
+						@*@hoaDonChiTiet.SoLuong*@ dgdf
+
+						@Html.ActionLink("-", "GiamSoLuong", new { }, new { @class = "btn btn-md" })
+					</div>
+
+				</div>
+				
+				<div style="float:left; display: inline; margin-top: 15px;">
+					@Html.ActionLink("Mua hàng", "AddToCart",
+				"Products", new { id = Model.ID },
+				new { @class = "btn btn-danger btn-md" })
+				</div>
+				
+				
 			</div>
 		</div>
-		<div class="col-md-6">
-			<h3>
+		<div class="col-md-6" style="display:inline;">
+			<h3 style="margin-top: 50px;">
 				@Html.DisplayFor(model => model.NameProduct)
 			</h3>
 			<p> @Html.DisplayNameFor(model => model.Price):@Html.DisplayFor(model => model.Price)</p>
@@ -26,21 +48,21 @@
 			<p>@Html.DisplayNameFor(model => model.PromotionCode)@Html.DisplayFor(model => model.PromotionCode)</p>
 			<p> @Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(model => model.Sale)</p>
 			<p> @Html.DisplayNameFor(model => model.Ship24h):@Html.DisplayFor(model => model.Ship24h)</p>
-			
-			
+
+
 			<p style="margin-top:50px">@Html.DisplayFor(model => model.Feature)</p>
 
 
 
 		</div>
 	</div>
-	<div style="position:relative; display:inline">
+	<div style="position:relative; display:inline; margin:100px">
 		<h4>Mô tả sản phẩm</h4>
 		@Html.DisplayFor(model => model.Description)
 	</div>
 
 </div>
 <p style="margin-top:50px;">
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Trở về trang chủ", "Index")
+	@Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID }) |
+	@Html.ActionLink("Trở về trang chủ", "Index")
 </p>

@@ -16,5 +16,10 @@ namespace _31161021458_NguyenTuQuyen.Models
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<HoaDon> HoaDons { get; set; }
+        public DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+
+        public DbSet<ShippingDetail> ShippingDetails { get; set; }
     }
 }

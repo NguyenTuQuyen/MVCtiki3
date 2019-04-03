@@ -18,7 +18,7 @@ namespace _31161021458_NguyenTuQuyen.Models
 
         [Display(Name = "Giá sản phẩm")]
         [Required]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         public string ImagePath { get; set; }
 
