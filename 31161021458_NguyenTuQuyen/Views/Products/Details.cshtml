@@ -11,7 +11,7 @@
 	<div class="col-md-12">
 		<div class="col-md-6">
 			<div class="col-xs-2">
-				sdf
+				Small Image
 			</div>
 			<div class="col-xs-10">
 				<img src="@Url.Content(Model.ImagePath) " width="100%" height="100%" multiple />
@@ -20,12 +20,10 @@
 			<div style="margin: 0% auto ;">
 				<div style="display:inline-block; float:left; margin-right:50px;">
 					<div style="font-size:12px; text-align:center" >Số lượng:</div>
-					<div style=" background-color:antiquewhite; border-radius:15px">
-						@Html.ActionLink("+", "TangSoLuong", new { id = Model.ID}, new { @class = "btn btn-md " })
-
-						@*@hoaDonChiTiet.SoLuong*@
-
-						@Html.ActionLink("-", "GiamSoLuong", new { id = Model.ID }, new { @class = "btn btn-md" })
+					<div style=" background-color:antiquewhite; border-radius:15px; text-align:center; " >
+						<p style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class = "btn btn-md " onclick="tangSL()">+</p>
+						<p style="margin:8px 15px; float:left; vertical-align:middle">1</p>
+						<p style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class="btn btn-md " onclick="giamSL()"> -</p>
 					</div>
 
 				</div>
@@ -43,11 +41,15 @@
 			<h3 style="margin-top: 50px;">
 				@Html.DisplayFor(model => model.NameProduct)
 			</h3>
+			@if (Model.Sale != null)
+			{
+				<h5 style="color: red; font-weight:bold">@Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(model => model.Sale)</h5>
+			}
 			<p> @Html.DisplayNameFor(model => model.Price):@Html.DisplayFor(model => model.Price)</p>
 			<p>@Html.DisplayNameFor(model => model.Installment):@Html.DisplayFor(model => model.Installment)</p>
-			<p>@Html.DisplayNameFor(model => model.PromotionCode)@Html.DisplayFor(model => model.PromotionCode)</p>
-			<p> @Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(model => model.Sale)</p>
+
 			<p> @Html.DisplayNameFor(model => model.Ship24h):@Html.DisplayFor(model => model.Ship24h)</p>
+			<p style="background-color:dodgerblue; border-radius:5px; width:200px; color:white; padding: 2px">@Html.DisplayNameFor(model => model.PromotionCode)@Html.DisplayFor(model => model.PromotionCode)</p>
 
 
 			<p style="margin-top:50px">@Html.DisplayFor(model => model.Feature)</p>
@@ -64,6 +66,6 @@
 </div>
 <p style="margin-top:50px;">
 	@Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID }) |
-	@Html.ActionLink("Xóa", "Delete", "Products", new { id = Model.ID } ) |
+	@Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
 	@Html.ActionLink("Trở về trang chủ", "Index")
 </p>

@@ -28,19 +28,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+		<dd>
+			<img src="@Url.Content(Model.ImagePath)" style="width: auto; height:300px; image-rendering:pixelated" />
+		</dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GalleryProductID)
+            @Html.DisplayNameFor(model => model.Category)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GalleryProductID)
+            @Html.DisplayFor(model => model.CategoryObj.Name)
         </dd>
 
         <dt>
@@ -60,11 +60,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Comment)
+            @Html.DisplayNameFor(model => model.Rated)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Comment)
+            @Html.DisplayFor(model => model.Rated)
         </dd>
 
         <dt>

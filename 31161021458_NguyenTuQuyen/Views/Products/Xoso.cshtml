@@ -1,0 +1,57 @@
+﻿
+@{
+	/**/
+
+	ViewBag.Title = "Xoso";
+}
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script type="text/javascript">
+		function randomNumbers() {
+			var str = Math.floor(Math.random() * 100).toString();
+			alert("Số quay được là :" +str);
+
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var num3 = document.getElementById('number3').value;
+
+			if (str == num1 || str == num2 || str == num3) {
+				document.getElementById('result').innerHTML = "Chúc mừng bạn bạn đã trúng độc đắt 1 tỷ đồng"
+				document.getElementById('result').style.color = "green"
+			} else {
+				document.getElementById('result').innerHTML = "Chúc bạn may mắn lần sau!"
+				document.getElementById('result').style.color = "red"
+
+			}
+
+			
+
+		}
+	</script>
+}
+
+<h2>Xổ số</h2>
+<table class="table-bordered table-condensed" style="margin: 10px 10px;">
+	<p>Dự đoán số trúng</p>
+	<tr>
+		<td>Số 1</td>
+		<td><input type="number" id="number1"/></td>
+	</tr>
+	<tr>
+		<td>Số 2</td>
+		<td><input type="number" id="number2" /></td>
+	</tr>
+	<tr>
+		<td>Số 3</td>
+		<td><input type="number"  id="number3" /></td>
+	</tr>
+
+</table>
+<button class="btn-primary" onclick="randomNumbers()"> Quay số</button>
+
+<h3  id="result" ></h3>
+
+<div style="margin-top: 50px;">
+	@Html.ActionLink("Trở về trang chủ", "Index")
+</div>
+

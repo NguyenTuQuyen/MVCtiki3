@@ -540,7 +540,7 @@
         displayOnly: false,
         rtl: false,
         showClear: true,
-        showCaption: true,
+        showCaption: false,
         starCaptionClasses: {
             0.5: 'label label-danger',
             1: 'label label-danger',
@@ -553,7 +553,7 @@
             4.5: 'label label-success',
             5: 'label label-success'
         },
-        clearButton: '<i class="glyphicon glyphicon-minus-sign"></i>',
+        
         clearButtonBaseClass: 'clear-rating',
         clearButtonActiveClass: 'clear-rating-active',
         clearCaptionClass: 'label label-default',

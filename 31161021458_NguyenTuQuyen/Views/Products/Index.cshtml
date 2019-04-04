@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div>
-		<div class="col-md-4">
+		<div class="col-md-4" >
 			<ul style="list-style:none">
 				@foreach (var item in Model)
 				{
@@ -20,14 +20,19 @@
 					@Html.ActionLink("Tạo mới sản phẩm", "Create")
 				</li>
 				<li style="margin-bottom:10px;">
-					<img src="~/Content/Images/icon_create.png" width="20" height="20" multiple />
+					<img src="~/Content/Images/list.png" width="20" height="20" multiple />
 					@Html.ActionLink("Tạo mới danh mục", "Create", "Categories")
+
+				</li>
+				<li style="margin-bottom:10px;">
+					<img src="~/Content/Images/logo-vietlott-300x300.jpg" width="20" height="20" multiple />
+					@Html.ActionLink("Chương trình xổ số", "Xoso")
 
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-8">
-			<div class="autoplay" >
+		<div class="col-md-8" >
+			<div class="variable-width">
 				@foreach (var item in Model)
 				{
 					<img src="@Url.Content(item.ImagePath)" style="width: auto; height:300px; image-rendering:pixelated" />
@@ -38,21 +43,40 @@
 				@foreach (var item in Model)
 				{
 
-					<div class="col-md-3" onclick="location.href='@Url.Action("Details", "Products", new { id = item.ID } )'">
+				<div class="col-md-3" onclick="location.href='@Url.Action("Details", "Products", new { id = item.ID } )'" style="margin-right:15px">
 
 
-						<img src="@Url.Content(item.ImagePath)" width="200" height="200" multiple />
-						<p>@Html.DisplayNameFor(model => model.NameProduct): @Html.DisplayFor(modelItem => item.NameProduct)</p>
-						<p>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
-						<p>@Html.DisplayNameFor(model => model.Rated): @Html.DisplayFor(modelItem => item.Rated)</p>
-						<p>@Html.DisplayNameFor(model => model.PromotionCode): @Html.DisplayFor(modelItem => item.PromotionCode)</p>
-						<p>@Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(modelItem => item.Sale)</p>
-						<p>@Html.DisplayNameFor(model => model.Installment): @Html.DisplayFor(modelItem => item.Installment)</p>
-						<p>@Html.DisplayNameFor(model => model.Ship24h): @Html.DisplayFor(modelItem => item.Ship24h)</p>
+					<img src="@Url.Content(item.ImagePath)" width="200" height="200" multiple />
+					<h4 id="name">@Html.DisplayFor(modelItem => item.NameProduct)</h4>
+					@if (item.Sale != null)
+					{
+						<h6 style="color: red; font-weight:bold">
+							@Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(modelItem => item.Sale)
+
+						</h6>
+					}
+					
+					<p>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
+					@if (item.Rated != null)
+					{
+						<p class="starability-result" data-rating="@item.Rated"></p>
+					}
+					@if (item.PromotionCode != null)
+					{
+						<p id="promotion_code" style="background-color:dodgerblue; border-radius:5px; color:white; padding: 2px"> Nhập mã  @Html.DisplayFor(modelItem => item.PromotionCode)</p>
+					}
+					@if (item.Installment == true)
+					{
+						<p id="installment">@Html.DisplayNameFor(model => model.Installment): @Html.DisplayFor(modelItem => item.Installment)</p>
+					}
+					@if (item.Ship24h == true)
+					{
+						<p id="ship24h">@Html.DisplayNameFor(model => model.Ship24h): @Html.DisplayFor(modelItem => item.Ship24h)</p>
+					}
 
 
 
-					</div>
+				</div>
 
 				}
 			</div>
@@ -61,30 +85,27 @@
 </div>
 
 @section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+
 	<link rel="stylesheet" type="text/css" href="~/Content/slick-1.8.1/slick/slick.css" />
 	<link rel="stylesheet" type="text/css" href="~/Content/slick-1.8.1/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="~/Content/starability-basic.css" />
 	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 
 	<script type="text/javascript" src="~/Content/slick-1.8.1/slick/slick.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$('.autoplay').slick(
-					slidesToShow: 3,
-				  slidesToScroll: 1,
-				  autoplay: true,
-				autoplaySpeed: 1500
-
-			);
+			$('.variable-width').slick({
+				dots: true,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true
+			});
 		});
 	</script>
 
-	@Scripts.Render("~/bundles/jqueryval")
-	<script type="text/javascript">
-		function viewDetails() {
-				location.href = '@Url.Action("Details","1")';
-
-			});
-	</script>
 
 }

@@ -111,7 +111,7 @@ namespace _31161021458_NguyenTuQuyen.Controllers
                 fileName = Path.Combine(Server.MapPath("~/Content/Images/ProductImages/"), fileName);
                 file.SaveAs(fileName);
 
-                product.CategoryProductID = int.Parse(product.Category);
+                product.CategoryProductID = 2;
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
@@ -299,6 +299,10 @@ namespace _31161021458_NguyenTuQuyen.Controllers
             {
                 return View(new ShippingDetail());
             }
+        }
+        public ActionResult Xoso()
+        {
+            return View();
         }
     }
 }
