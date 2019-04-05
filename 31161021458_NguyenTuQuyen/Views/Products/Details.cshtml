@@ -3,7 +3,27 @@
 @{
 	ViewBag.Title = "Details";
 }
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script>
+		var sl = parseInt(document.getElementById('soluong').value);
 
+		function tangSL() {
+			sl++;
+			document.getElementById('soluong').value = sl + "";
+		}
+		
+		function giamSL() {
+			if (sl >= 1) {
+				sl--;
+				document.getElementById('soluong').value = sl + "";
+
+			}
+		}
+		
+	</script>
+
+}
 <h2>Chi tiết sản phẩm</h2>
 
 <div>
@@ -19,22 +39,20 @@
 
 			<div style="margin: 0% auto ;">
 				<div style="display:inline-block; float:left; margin-right:50px;">
-					<div style="font-size:12px; text-align:center" >Số lượng:</div>
-					<div style=" background-color:antiquewhite; border-radius:15px; text-align:center; " >
-						<p style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class = "btn btn-md " onclick="tangSL()">+</p>
-						<p style="margin:8px 15px; float:left; vertical-align:middle">1</p>
-						<p style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class="btn btn-md " onclick="giamSL()"> -</p>
+					<div style="font-size:12px; text-align:center">Số lượng:</div>
+					<div style="  border-radius:15px; text-align:center; ">
+						<p id="tangsl" style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class="btn btn-md " onclick="tangSL()">+</p>
+						<input type="button" id="soluong" style="margin:8px 15px; float:left; vertical-align:middle; border:none; background-color:transparent " value="1"/>
+						<p id="giamsl" style=" background-color:antiquewhite; border-radius:15px;float:left" type="button" class="btn btn-md " onclick="giamSL()"> -</p>
 					</div>
 
 				</div>
-				
-				<div style="float:left; display: inline; margin-top: 15px;">
-					@Html.ActionLink("Mua hàng", "AddToCart",
-				"Products", new { id = Model.ID },
-				new { @class = "btn btn-danger btn-md" })
+
+				<div class="btn btn-danger" style="float:left; display: inline; margin-top: 15px; ">
+					<a style="color: white" href="#" onclick="window.location.href='@Url.Action("AddToCart", "Products",new { id = Model.ID })' + '?soluong=' + $('#soluong').val()">Mua hàng</a>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="col-md-6" style="display:inline;">

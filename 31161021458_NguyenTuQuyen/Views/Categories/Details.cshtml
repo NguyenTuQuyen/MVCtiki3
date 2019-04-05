@@ -19,11 +19,11 @@
 			@Html.DisplayFor(model => model.Name)
 		</dd>
 		<dt>
-			@Html.DisplayNameFor(model => model.Icon)
+			@Html.DisplayNameFor(model => model.ImagePath)
 		</dt>
 
 		<dd>
-			<img src="@Url.Content(Model.Icon)" width="50" height="50" multiple />
+			<img src="@Url.Content(Model.ImagePath)" width="50" height="50" multiple />
 
 		</dd>
 
@@ -33,5 +33,5 @@
 	@Html.ActionLink("Trở về DS Danh mục", "Index")
 </div>
 <div>
-	@Html.ActionLink("Trở về Home", "Index", "Home")
+	@Html.ActionLink("Trở về Home", "Index", "Products")
 </div>

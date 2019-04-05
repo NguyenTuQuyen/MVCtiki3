@@ -35,6 +35,7 @@ namespace _31161021458_NguyenTuQuyen.Models
         [Display(Name = "Giao nhanh")]
         public Boolean Ship24h { get; set; }
 
+     
         [Display(Name = "Giảm giá")]
         public double Sale { get; set; }
 
@@ -58,7 +59,8 @@ namespace _31161021458_NguyenTuQuyen.Models
         public int Buyed { get; set; }
 
 
-        
+
+
 
     }
 }

@@ -161,10 +161,13 @@ namespace _31161021458_NguyenTuQuyen.Controllers
             base.Dispose(disposing);
         }
         //Add to cart
-        public ActionResult AddToCart(int id)
+        
+        public ActionResult AddToCart(int id , int soluong)
         {
             //Kiem tra Id movie ton tai hay khong
             var product = db.Products.Where(x => x.ID == id).FirstOrDefault();
+            
+
             if (product == null)
             {
                 return RedirectToAction("Index");
@@ -182,11 +185,12 @@ namespace _31161021458_NguyenTuQuyen.Controllers
             var chiTietHoaDon = hoaDon.ChiTietHoaDons.Where(x => x.ProductObj.ID == id).FirstOrDefault();
             if (chiTietHoaDon == null)
             {
+
                 chiTietHoaDon = new ChiTietHoaDon();
                 chiTietHoaDon.MaProduct = id;
                 chiTietHoaDon.ProductObj = product;
                 chiTietHoaDon.HoaDonObj = hoaDon;
-                chiTietHoaDon.SoLuong = 1;
+                chiTietHoaDon.SoLuong = soluong;
                 hoaDon.ChiTietHoaDons.Add(chiTietHoaDon);
             }
             else

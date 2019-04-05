@@ -12,21 +12,21 @@
 			<th>Sản phẩm</th>
 			<th class="text-right">Giá</th>
 			<th class="text-right">Thành Tiền</th>
-			<th >Xóa SP</th>
-			<th >Tăng SL</th>
-			<th >Giảm SL</th>
+			<th>Xóa SP</th>
+			<th>Tăng SL</th>
+			<th>Giảm SL</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach (var hoaDonChiTiet in Model.ChiTietHoaDons)
 		{
 			<tr>
-				<td class="text-center">@hoaDonChiTiet.SoLuong</td>
+				<td id="soluong_hienthi" class="text-center">@hoaDonChiTiet.SoLuong</td>
 				<td class="text-left" onclick="location.href='@Url.Action("Details", "Products", new { id = hoaDonChiTiet.ProductObj.ID } )'">
-				<a>
-					<img src="@Url.Content(hoaDonChiTiet.ProductObj.ImagePath)" width="30" height="30" multiple />
-					@hoaDonChiTiet.ProductObj.NameProduct
-				</a>
+					<a>
+						<img src="@Url.Content(hoaDonChiTiet.ProductObj.ImagePath)" width="30" height="30" multiple />
+						@hoaDonChiTiet.ProductObj.NameProduct
+					</a>
 				</td>
 				<td class="text-right">@hoaDonChiTiet.ProductObj.Price.ToString("c")</td>
 				<td class="text-right">
