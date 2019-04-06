@@ -257,6 +257,18 @@
     <Compile Include="Migrations\201904051818560_InitialCreate18.Designer.cs">
       <DependentUpon>201904051818560_InitialCreate18.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904061516201_InitialCreate19.cs" />
+    <Compile Include="Migrations\201904061516201_InitialCreate19.Designer.cs">
+      <DependentUpon>201904061516201_InitialCreate19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904061534570_InitialCreate20.cs" />
+    <Compile Include="Migrations\201904061534570_InitialCreate20.Designer.cs">
+      <DependentUpon>201904061534570_InitialCreate20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904061557204_InitialCreate21.cs" />
+    <Compile Include="Migrations\201904061557204_InitialCreate21.Designer.cs">
+      <DependentUpon>201904061557204_InitialCreate21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -341,6 +353,8 @@
     <Content Include="Views\Products\Summary.cshtml" />
     <Content Include="Views\Products\CheckoutCompleted.cshtml" />
     <Content Include="Views\Products\Xoso.cshtml" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
+    <Content Include="Views\Products\Index.Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,6 +431,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904051818560_InitialCreate18.resx">
       <DependentUpon>201904051818560_InitialCreate18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904061516201_InitialCreate19.resx">
+      <DependentUpon>201904061516201_InitialCreate19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904061534570_InitialCreate20.resx">
+      <DependentUpon>201904061534570_InitialCreate20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904061557204_InitialCreate21.resx">
+      <DependentUpon>201904061557204_InitialCreate21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

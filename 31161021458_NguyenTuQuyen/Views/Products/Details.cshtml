@@ -5,7 +5,7 @@
 }
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-	<script>
+	<script type="text/javascript">
 		var sl = parseInt(document.getElementById('soluong').value);
 
 		function tangSL() {
@@ -67,7 +67,7 @@
 			<p>@Html.DisplayNameFor(model => model.Installment):@Html.DisplayFor(model => model.Installment)</p>
 
 			<p> @Html.DisplayNameFor(model => model.Ship24h):@Html.DisplayFor(model => model.Ship24h)</p>
-			<p style="background-color:dodgerblue; border-radius:5px; width:200px; color:white; padding: 2px">@Html.DisplayNameFor(model => model.PromotionCode)@Html.DisplayFor(model => model.PromotionCode)</p>
+			<p style="background-color:dodgerblue; border-radius:5px; width:200px; color:white; padding: 2px">@Html.DisplayNameFor(model => model.PromotionCode): @Html.DisplayFor(model => model.PromotionCode)</p>
 
 
 			<p style="margin-top:50px">@Html.DisplayFor(model => model.Feature)</p>

@@ -18,6 +18,7 @@ namespace _31161021458_NguyenTuQuyen.Models
         public string Name { get; set; }
         public string ImagePath { get; set; }
         public virtual IList<Product> Products { get; set; }
+
     }
     
 }

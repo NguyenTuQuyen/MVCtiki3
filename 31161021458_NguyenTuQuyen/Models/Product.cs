@@ -59,7 +59,7 @@ namespace _31161021458_NguyenTuQuyen.Models
         public int Buyed { get; set; }
 
 
-
+    
 
 
     }

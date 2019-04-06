@@ -22,9 +22,12 @@ namespace _31161021458_NguyenTuQuyen
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/cssDesktop").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Desktop/Css/Site.css"));
+            bundles.Add(new StyleBundle("~/Content/cssMobile").Include(
+                                  "~/Content/bootstrap.css",
+                                  "~/Content/Mobile/Css/Site.css"));
         }
     }
 }

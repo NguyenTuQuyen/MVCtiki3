@@ -61,8 +61,8 @@ namespace _31161021458_NguyenTuQuyen.Controllers
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                product.ImagePath = "~/Content/Images/ProductImages/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/ProductImages/"), fileName);
+                product.ImagePath = "~/Content/Desktop/ProductImages/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Desktop/ProductImages/"), fileName);
                 file.SaveAs(fileName);
 
                 product.CategoryProductID = int.Parse(product.Category);
@@ -107,8 +107,8 @@ namespace _31161021458_NguyenTuQuyen.Controllers
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                product.ImagePath = "~/Content/Images/ProductImages/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/ProductImages/"), fileName);
+                product.ImagePath = "~/Content/Desktop/ProductImages/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Desktop/ProductImages/"), fileName);
                 file.SaveAs(fileName);
 
                 product.CategoryProductID = 2;
@@ -239,11 +239,11 @@ namespace _31161021458_NguyenTuQuyen.Controllers
             return View("AddToCart", hoaDon);
         }
 
-        public ActionResult RemoveFromCart(int maMovies)
+        public ActionResult RemoveFromCart(int maProducts)
         {
             var hoaDon = this.Session["HoaDon"] as HoaDon;
             var chiTietHoaDon = hoaDon.ChiTietHoaDons.Where(x
-            => x.ProductObj.ID == maMovies).FirstOrDefault();
+            => x.ProductObj.ID == maProducts).FirstOrDefault();
             hoaDon.ChiTietHoaDons.Remove(chiTietHoaDon);
             return View("AddToCart", hoaDon);
         }
@@ -264,13 +264,14 @@ namespace _31161021458_NguyenTuQuyen.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Checkout(ShippingDetail detail)
+        public ActionResult Checkout(ShippingDetail detail, string maKM)
         {
             var hoaDon = this.Session["HoaDon"] as HoaDon;
             if (hoaDon.ChiTietHoaDons.Count() == 0)
             {
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
             }
+          
             if (ModelState.IsValid)
             {
                 StringBuilder body = new StringBuilder()

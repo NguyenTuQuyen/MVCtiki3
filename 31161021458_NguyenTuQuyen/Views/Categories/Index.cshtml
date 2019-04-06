@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới danh mục", "Create")
 </p>
 <table class="table">
 	<tr>
@@ -29,11 +29,14 @@
 			<img src="@Url.Content(item.ImagePath)" width="50" height="50" multiple />
 		</td>
 		<td>
-			@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-			@Html.ActionLink("Details", "Details", new { id = item.ID }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+			@Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID }) |
+			@Html.ActionLink("Chi tiết", "Details", new { id = item.ID }) |
+			@Html.ActionLink("Xóa", "Delete", new { id = item.ID })
 		</td>
 	</tr>
 }
 
 </table>
+<div>
+	@Html.ActionLink("Trở về Home", "Index", "Products")
+</div>

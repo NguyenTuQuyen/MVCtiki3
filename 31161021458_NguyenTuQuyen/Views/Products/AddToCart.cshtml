@@ -3,7 +3,11 @@
 	ViewBag.Title = "AddToCart";
 }
 
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
 
+
+}
 <h2>Your cart</h2>
 <table id="cartTable" class="table">
 	<thead>
@@ -15,17 +19,21 @@
 			<th>Xóa SP</th>
 			<th>Tăng SL</th>
 			<th>Giảm SL</th>
+
 		</tr>
 	</thead>
 	<tbody>
+		
 		@foreach (var hoaDonChiTiet in Model.ChiTietHoaDons)
 		{
 			<tr>
-				<td id="soluong_hienthi" class="text-center">@hoaDonChiTiet.SoLuong</td>
+				<td  class="text-center">@hoaDonChiTiet.SoLuong</td>
 				<td class="text-left" onclick="location.href='@Url.Action("Details", "Products", new { id = hoaDonChiTiet.ProductObj.ID } )'">
 					<a>
 						<img src="@Url.Content(hoaDonChiTiet.ProductObj.ImagePath)" width="30" height="30" multiple />
 						@hoaDonChiTiet.ProductObj.NameProduct
+						<input type="button" id="maKM" style="display:none" value="@hoaDonChiTiet.ProductObj.PromotionCode" />
+
 					</a>
 				</td>
 				<td class="text-right">@hoaDonChiTiet.ProductObj.Price.ToString("c")</td>
@@ -34,7 +42,7 @@
 				</td>
 				<td style="align-content:flex-end">
 					@Html.ActionLink("Remove", "RemoveFromCart",
-	new { maMovies = hoaDonChiTiet.MaProduct }, new { @class = "btn btn-sm btn-warning" })
+	new { maProducts = hoaDonChiTiet.MaProduct }, new { @class = "btn btn-sm btn-warning" })
 				</td>
 				<td>
 					@Html.ActionLink("+", "TangSoLuong",
@@ -44,6 +52,7 @@
 					@Html.ActionLink("-", "GiamSoLuong",
 	new { id = hoaDonChiTiet.MaProduct }, new { @class = "btn btn-sm btn-primary" })
 				</td>
+
 			</tr>
 		}
 	</tbody>
@@ -58,5 +67,7 @@
 </table>
 <div class="text-center">
 	@Html.ActionLink("Continue shopping", "Index", null, new { @class = "btn btn-primary" })
-	@Html.ActionLink("Checkout now", "Checkout", null, new { @class = "btn btn-primary" })
+	<a class="btn btn-primary" href="#" onclick="window.location.href='@Url.Action("Checkout", "Products")' + '?maKM=' + $('#maKM').val()">Checkout</a>
 </div>
+
+

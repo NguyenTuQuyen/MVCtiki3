@@ -11,21 +11,22 @@
 				@foreach (var item in Model)
 				{
 					<li style="margin-bottom:10px;">
+						
 						<img src="@Url.Content(item.CategoryObj.ImagePath)" width="20" height="20" multiple />
 						@Html.ActionLink(item.CategoryObj.Name, "Index", "Categories", new { id = item.CategoryObj.ID })
 					</li>
 				}
 				<li style="margin-bottom:10px; margin-top:50px;">
-					<img src="~/Content/Images/icon_create.png" width="20" height="20" multiple />
+					<img src="~/Content/Desktop/icon_create.png" width="20" height="20" multiple />
 					@Html.ActionLink("Tạo mới sản phẩm", "Create")
 				</li>
 				<li style="margin-bottom:10px;">
-					<img src="~/Content/Images/list.png" width="20" height="20" multiple />
+					<img src="~/Content/Desktop/list.png" width="20" height="20" multiple />
 					@Html.ActionLink("Tạo mới danh mục", "Create", "Categories")
 
 				</li>
 				<li style="margin-bottom:10px;">
-					<img src="~/Content/Images/logo-vietlott-300x300.jpg" width="20" height="20" multiple />
+					<img src="~/Content/Desktop/logo-vietlott-300x300.jpg" width="20" height="20" multiple />
 					@Html.ActionLink("Chương trình xổ số", "Xoso")
 
 				</li>
@@ -63,7 +64,7 @@
 					}
 					@if (item.PromotionCode != null)
 					{
-						<p id="promotion_code" style="background-color:dodgerblue; border-radius:5px; color:white; padding: 2px"> Nhập mã  @Html.DisplayFor(modelItem => item.PromotionCode)</p>
+						<p id="promotion_code" style="background-color:dodgerblue; border-radius:5px; color:white; padding: 2px; "> Nhập mã  @Html.DisplayFor(modelItem => item.PromotionCode)</p>
 					}
 					@if (item.Installment == true)
 					{
@@ -87,12 +88,12 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 
-	<link rel="stylesheet" type="text/css" href="~/Content/slick-1.8.1/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="~/Content/slick-1.8.1/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick-theme.css" />
 	<link rel="stylesheet" type="text/css" href="~/Content/starability-basic.css" />
 	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-	<script type="text/javascript" src="~/Content/slick-1.8.1/slick/slick.min.js"></script>
+	<script type="text/javascript" src="~/Scripts/slick/slick.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function () {

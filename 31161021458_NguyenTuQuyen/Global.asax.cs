@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.WebPages;
 
 namespace _31161021458_NguyenTuQuyen
 {
@@ -13,6 +14,9 @@ namespace _31161021458_NguyenTuQuyen
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            var displayModes = DisplayModeProvider.Instance.Modes;
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

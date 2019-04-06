@@ -1,0 +1,101 @@
+﻿@model IEnumerable<_31161021458_NguyenTuQuyen.Models.Product>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<div class="container">
+	<div>
+		<div class="variable-width">
+			@foreach (var item in Model)
+			{
+				<img src="@Url.Content(item.ImagePath)" style="width: auto; height:300px; image-rendering:pixelated" />
+
+			}
+		</div>
+			<div >
+			<h5>Danh mục sản phẩm</h5>
+				<div style="display:flex;flex-direction:row; flex-wrap: wrap;">
+					@foreach (var item in Model)
+					{
+						<div   style="display:flex;flex-direction:column; margin:3px 3px; width:30% " >
+							<div >
+							<img src="@Url.Content(item.CategoryObj.ImagePath)" width="40" height="40" multiple />
+							</div>
+							<div>
+								@Html.ActionLink(item.CategoryObj.Name, "Index", "Categories", new { id = item.CategoryObj.ID })
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+			<div  >
+				@foreach (var item in Model)
+				{
+
+					<div  onclick="location.href='@Url.Action("Details", "Products", new { id = item.ID } )'" style="margin-right:15px; ">
+
+
+						<img src="@Url.Content(item.ImagePath)" width="200" height="200" multiple />
+						<h4 id="name">@Html.DisplayFor(modelItem => item.NameProduct)</h4>
+						@if (item.Sale != null)
+						{
+							<h6 style="color: red; font-weight:bold">
+								@Html.DisplayNameFor(model => model.Sale): @Html.DisplayFor(modelItem => item.Sale)
+
+							</h6>
+						}
+
+						<p>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(modelItem => item.Price)</p>
+						@if (item.Rated != null)
+						{
+							<p class="starability-result" data-rating="@item.Rated"></p>
+						}
+						@if (item.PromotionCode != null)
+						{
+							<p id="promotion_code" style="background-color:dodgerblue; border-radius:5px; color:white; padding: 2px; width:70% "> Nhập mã  @Html.DisplayFor(modelItem => item.PromotionCode)</p>
+						}
+						@if (item.Installment == true)
+						{
+							<p id="installment">@Html.DisplayNameFor(model => model.Installment): @Html.DisplayFor(modelItem => item.Installment)</p>
+						}
+						@if (item.Ship24h == true)
+						{
+							<p id="ship24h">@Html.DisplayNameFor(model => model.Ship24h): @Html.DisplayFor(modelItem => item.Ship24h)</p>
+						}
+
+
+
+					</div>
+
+				}
+			</div>
+
+		</div>
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+
+	<link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="~/Content/starability-basic.css" />
+	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+	<script type="text/javascript" src="~/Scripts/slick/slick.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.variable-width').slick({
+				dots: true,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				centerMode: true,
+				variableWidth: true
+			});
+		});
+	</script>
+
+
+}
