@@ -30,7 +30,7 @@ namespace _31161021458_NguyenTuQuyen.Models
         [ForeignKey("CategoryObj")]
         public int? CategoryProductID { get; set; }
         public virtual Category CategoryObj { get; set; }
-
+        
 
         [Display(Name = "Giao nhanh")]
         public Boolean Ship24h { get; set; }
@@ -57,10 +57,5 @@ namespace _31161021458_NguyenTuQuyen.Models
 
         [Display(Name = "Lượt mua")]
         public int Buyed { get; set; }
-
-
-    
-
-
     }
 }

@@ -61,8 +61,8 @@ namespace _31161021458_NguyenTuQuyen.Controllers
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                category.ImagePath = "~/Content/Images/IconCategories/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/IconCategories/"), fileName);
+                category.ImagePath = "~/Content/Desktop/IconCategories/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Desktop/IconCategories/"), fileName);
                 file.SaveAs(fileName);
 
                 db.Categories.Add(category);
@@ -100,8 +100,8 @@ namespace _31161021458_NguyenTuQuyen.Controllers
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 string extension = Path.GetExtension(file.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                category.ImagePath = "~/Content/Images/IconCategories/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Content/Images/IconCategories/"), fileName);
+                category.ImagePath = "~/Content/Desktop/IconCategories/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Desktop/IconCategories/"), fileName);
                 file.SaveAs(fileName);
 
                 db.Entry(category).State = EntityState.Modified;

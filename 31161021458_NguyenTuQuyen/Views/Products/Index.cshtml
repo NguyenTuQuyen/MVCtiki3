@@ -8,12 +8,14 @@
 	<div>
 		<div class="col-md-4" >
 			<ul style="list-style:none">
-				@foreach (var item in Model)
+				@foreach (var item in Model.Select(x =>x.CategoryObj).Distinct() )
 				{
+					
 					<li style="margin-bottom:10px;">
 						
-						<img src="@Url.Content(item.CategoryObj.ImagePath)" width="20" height="20" multiple />
-						@Html.ActionLink(item.CategoryObj.Name, "Index", "Categories", new { id = item.CategoryObj.ID })
+						<img src="@Url.Content(item.ImagePath)" width="20" height="20" multiple />
+						@Html.ActionLink(item.Name, "Index", "Categories", new { id = item.ID })
+						
 					</li>
 				}
 				<li style="margin-bottom:10px; margin-top:50px;">
@@ -40,7 +42,7 @@
 
 				}
 			</div>
-			<div class="row grid-demo">
+			<div class="row grid-demo" style="display:flex; flex-direction:row; flex-wrap: wrap;">
 				@foreach (var item in Model)
 				{
 
