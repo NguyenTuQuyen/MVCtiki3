@@ -35,7 +35,7 @@
 			</ul>
 		</div>
 		<div class="col-md-8" >
-			<div class="variable-width">
+			<div class="variable-width"   style="margin-bottom:50px;>
 				@foreach (var item in Model)
 				{
 					<img src="@Url.Content(item.ImagePath)" style="width: auto; height:300px; image-rendering:pixelated" />
@@ -100,12 +100,13 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('.variable-width').slick({
-				dots: true,
-				infinite: true,
 				speed: 300,
 				slidesToShow: 1,
 				centerMode: true,
-				variableWidth: true
+				variableWidth: true,
+				autoplay: true,
+				autoplaySpeed: 2000,
+				pauseOnHover: true,
 			});
 		});
 	</script>

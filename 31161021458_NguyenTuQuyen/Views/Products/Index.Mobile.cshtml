@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div>
-		<div class="variable-width">
+		<div class="variable-width" style="margin-bottom:50px;">
 			@foreach (var item in Model)
 			{
 				<img src="@Url.Content(item.ImagePath)" style="width: auto; height:300px; image-rendering:pixelated" />
@@ -15,21 +15,21 @@
 		</div>
 			<div >
 			<h5>Danh mục sản phẩm</h5>
-				<div style="display:flex;flex-direction:row; flex-wrap: wrap;">
-					@foreach (var item in Model)
+				<div style="display:flex;flex-direction:row; flex-wrap: wrap; margin-bottom:50px;">
+					@foreach (var item in Model.Select(x => x.CategoryObj).Distinct())
 					{
 						<div   style="display:flex;flex-direction:column; margin:3px 3px; width:30% " >
 							<div >
-							<img src="@Url.Content(item.CategoryObj.ImagePath)" width="40" height="40" multiple />
+							<img src="@Url.Content(item.ImagePath)" width="40" height="40" multiple />
 							</div>
 							<div>
-								@Html.ActionLink(item.CategoryObj.Name, "Index", "Categories", new { id = item.CategoryObj.ID })
+								@Html.ActionLink(item.Name, "Index", "Categories", new { id = item.ID })
 							</div>
 						</div>
 					}
 				</div>
 			</div>
-			<div  >
+			<div style="display:flex; flex-direction:row; flex-wrap: wrap;" >
 				@foreach (var item in Model)
 				{
 
@@ -87,12 +87,13 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('.variable-width').slick({
-				dots: true,
-				infinite: true,
 				speed: 300,
 				slidesToShow: 1,
 				centerMode: true,
-				variableWidth: true
+				variableWidth: true,
+				autoplay: true,
+				autoplaySpeed: 2000,
+				pauseOnHover: true,
 			});
 		});
 	</script>

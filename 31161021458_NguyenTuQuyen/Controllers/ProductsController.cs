@@ -18,6 +18,7 @@ namespace _31161021458_NguyenTuQuyen.Controllers
 
         // GET: Products
         [HttpGet]
+
         public ActionResult Index()
         {
             return View(db.Products.ToList());
@@ -54,6 +55,7 @@ namespace _31161021458_NguyenTuQuyen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
